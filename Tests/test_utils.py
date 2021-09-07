@@ -11,9 +11,9 @@ def teardown():
 
 @pytest.mark.parametrize("list1", [(1, 2, 3)])
 @pytest.mark.parametrize("list2", [(0, 2, 4)])
-@pytest.mark.parametrize("typeinobj", ['bool'])
+@pytest.mark.parametrize("typeinobj", ['str'])
 def test_mas(list1, list2, typeinobj):
-    soft_assert(ListMet.compars_mass(list1, list2, typeinobj))
+    soft_assert(ListMet._compars_mass(list1, list2, typeinobj))
 
 
 @pytest.mark.parametrize("list1", [('bool')])
