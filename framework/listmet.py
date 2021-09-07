@@ -1,10 +1,12 @@
-class ListMet(object):
 
-
-    #Метод для сравнения списков
-    def _compars_mass(a,b):
-        for i in range(0, len(a)):
-            if (a[i]!=b[i]):
-                 return(a[i],b[i])
-
-
+class ListMet():
+    def _compars_mass(self,first_list, second_list, type_value=False):
+        if type_value is False:
+            for i in range(0, len(first_list)):
+                if first_list[i] != second_list[i]:
+                    return first_list[i], second_list[i], i
+        else:
+            for i in range(0, len(first_list)):
+                if eval(type_value + '({})'.format(first_list[i])) != eval(type_value +
+                    '({})'.format(second_list[i])):
+                    return (first_list[i], second_list[i], i)

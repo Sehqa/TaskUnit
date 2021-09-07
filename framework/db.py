@@ -2,7 +2,7 @@ import sqlite3
 
 class Db(object):
 
-    def _dictfrombd (none):
+    def _dictfrombd(zapr):
         dict1 = {}
         keylist = []
         resultlist = []
@@ -10,16 +10,17 @@ class Db(object):
         conn = sqlite3.connect('mydb.db')
         cur = conn.cursor()
         cur.execute("""CREATE TABLE IF NOT EXISTS users(
-           userid INT PRIMARY KEY,
-           fname TEXT,
-           lname TEXT,
-           gender TEXT);
-        """)
+               userid INT PRIMARY KEY,
+               fname TEXT,
+               lname TEXT,
+               gender TEXT);
+            """)
         conn.commit()
-      #  cur.execute("""INSERT INTO users(userid, fname, lname, gender)
-      #    VALUES('00021', 'Alex4', 'Smith4', 'male4');""")
-     #   conn.commit()
-        cur.execute("SELECT * FROM users;")
+        # cur.execute("""INSERT INTO users(userid, fname, lname, gender)
+        # VALUES('00021', 'Alex4', 'Smith4', 'male4');""")
+        # conn.commit()
+        # cur.execute("SELECT * FROM users;")
+        cur.execute(zapr)
         colnames = cur.description
         for i in range(0, len(colnames)):
             keylist.append(colnames[i][0])

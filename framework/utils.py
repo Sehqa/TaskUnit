@@ -1,10 +1,11 @@
-import requests
 import datetime
+import requests
 
 
 class Utils(object):
 
     #декоратор
+
     def once(func):
         def wrapper(*args):
             with open(args[0], 'w') as ang:
@@ -18,11 +19,11 @@ class Utils(object):
     @once
     def _logger(filename, url, level):
         rss = requests.get(url)
-        if (level == 1):
+        if level == 1:
             return (url, rss.text)
-        elif (level == 2):
+        elif level == 2:
             return (url, rss.status_code)
-        elif (level == 3):
+        elif level == 3:
             currenttime = datetime.datetime.now().time()
             return (url, rss.status_code, currenttime, rss.text)
 
@@ -31,20 +32,19 @@ class Utils(object):
         return True
 
     #метод ожидания
+    @staticmethod
     def mainfunc(testfun, timeout, period):
         tim = timeout
         shet = 0
         for i in range(0, timeout):
-            if (testfun):
-                return ('Success')
-                exit(0)
-            elif (tim <= 0):
-                return ('timeout')
-                exit(0)
+            if testfun:
+                return 'Success'
+            elif tim <= 0:
+                return 'timeout'
             else:
                 shet = shet + 5
                 tim = tim - period
-                if (testfun):
-                    return (print('Функция ' + 'вызывалась в течении ' + str(shet) + ' секунд'))
+                if testfun:
+                    return print('Функция ' + 'вызывалась в течении ' + str(shet) + ' секунд')
                 else:
-                    time.sleep(5)
+                    datetime.time.sleep(5)
